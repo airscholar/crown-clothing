@@ -8,11 +8,11 @@ export class DirectoryMenu extends React.Component {
 
         this.state = {
             sections: [
-                { id: 1, title: "HATS", subtitle: "SHOW NOW", img: "https://i.ibb.co/cvpntL1/hats.png" },
-                { id: 2, title: "JACKETS", subtitle: "SHOW NOW", img: "https://i.ibb.co/px2tCc3/jackets.png" },
-                { id: 3, title: "SNEAKERS", subtitle: "SHOW NOW", img: "https://i.ibb.co/0jqHpnp/sneakers.png" },
-                { id: 4, title: "WOMENS", subtitle: "SHOW NOW", img: "https://i.ibb.co/GCCdy8t/womens.png", size: 'large' },
-                { id: 5, title: "MENS", subtitle: "SHOW NOW", img: "https://i.ibb.co/R70vBrQ/men.png", size: 'large' },
+                { id: 1, title: "HATS", subtitle: "SHOW NOW", imageUrl: "https://i.ibb.co/cvpntL1/hats.png", linkUrl: 'hats' },
+                { id: 2, title: "JACKETS", subtitle: "SHOW NOW", imageUrl: "https://i.ibb.co/px2tCc3/jackets.png", linkUrl: '' },
+                { id: 3, title: "SNEAKERS", subtitle: "SHOW NOW", imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png", linkUrl: '' },
+                { id: 4, title: "WOMENS", subtitle: "SHOW NOW", imageUrl: "https://i.ibb.co/GCCdy8t/womens.png", size: 'large', linkUrl: '' },
+                { id: 5, title: "MENS", subtitle: "SHOW NOW", imageUrl: "https://i.ibb.co/R70vBrQ/men.png", size: 'large', linkUrl: '' },
             ]
         }
     }
@@ -21,8 +21,8 @@ export class DirectoryMenu extends React.Component {
         return (
             <div className='directory-menu' >
                 {
-                    this.state.sections.map(({ id, title, img, size }) => {
-                        return <MenuItem key={id} title={title} imageUrl={img} size={size} />
+                    this.state.sections.map(({ id, ...otherSectionProps }) => {
+                        return <MenuItem key={id} {...otherSectionProps} />
                     })
                 }
             </div>
