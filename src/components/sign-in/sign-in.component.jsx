@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { signInWithGoogle } from '../../firebase/firebase.utils';
 import { CustomButton } from '../custom-button/custom-button.component';
 import { FormInput } from '../form-input/form-input.component';
 
@@ -37,7 +38,11 @@ export const SignIn = (props) => {
         <form>
             <FormInput label="Email" name="email" type="email" value={email} handleChange={handleChange} required />
             <FormInput label="Password" name="password" type="password" value={password} handleChange={handleChange} required />
-            <CustomButton type="submit" handleSubmit={handleSubmit}>Sign in</CustomButton>
+
+            <div className='buttons'>
+                <CustomButton style={{ "marginRight": "10px" }} type="submit" onClick={handleSubmit}>Sign in</CustomButton>
+                <CustomButton type='button' isGoogleSignin onClick={signInWithGoogle}>Sign in with google</CustomButton>
+            </div>
         </form>
 
     </div>)
