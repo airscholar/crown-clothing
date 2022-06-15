@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { signInWithGoogle } from '../../firebase/firebase.utils';
 import { CustomButton } from '../custom-button/custom-button.component';
 import { FormInput } from '../form-input/form-input.component';
+import { auth } from '../../firebase/firebase.utils';
 
 import './sign-in.styles.scss'
 
@@ -10,15 +11,28 @@ export const SignIn = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault();
-        console.log({ email, password, event })
 
+        let user;
+        try {
+            user = await auth.signInWithEmailAndPassword(email, password);
+        } catch (err) {
+            // console.log('error logging in', err.message)
+        }
+
+        if (!user) {
+            return alert('Invalid credentials')
+        }
+
+        alert('Tada! You are logged in!')
+
+        console.log({ user })
     }
 
     const handleChange = event => {
         const { value, name } = event.target;
-        console.log({ value, name })
+
         const state = {
             email: () => (
                 setEmail(value)
