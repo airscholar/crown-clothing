@@ -3,6 +3,7 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import firebaseConfig from './constant';
 
+
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
