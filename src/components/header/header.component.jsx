@@ -7,6 +7,7 @@ import './header.styles.scss';
 
 export const Header = ({ user }) => (
     <div className='header'>
+        {console.log({ user })}
         <Link className='logo-container' to="/">
             <img src={logo} alt='logo' className='logo' />
         </Link>
