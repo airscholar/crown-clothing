@@ -9,6 +9,7 @@ import { auth } from './firebase/firebase.utils';
 import { createUserProfileDocument } from './firebase/user.firebase';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
+import { setToggleCartHidden } from './redux/cart/cart.actions';
 
 class App extends React.Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class App extends React.Component {
             id: snapShot.id,
             ...snapShot.data(),
           });
+          setToggleCartHidden(true);
         });
       } else {
         setCurrentUser(userAuth);
@@ -63,12 +65,14 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user, cart }) => ({
   currentUser: user.currentUser,
+  toggleCartHidden: cart.toggleCartHidden,
 });
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
+  setToggleCartHidden: cart => dispatch(setToggleCartHidden(cart)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -5,6 +5,9 @@ import logo from './../assets/crown-svg.svg';
 import { auth } from '../../firebase/firebase.utils';
 import './header.styles.scss';
 import { connect } from 'react-redux';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+// import { setToggleCartHidden } from '../../redux/cart/cart.actions';
 
 const Header = ({ currentUser }) => (
     < div className='header' >
@@ -20,10 +23,14 @@ const Header = ({ currentUser }) => (
                 </div> :
                     <Link className='option' to='/signin'>SIGN IN</Link>
             }
+            <CartIcon />
         </div>
+
+        <CartDropdown />
     </div >
 )
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
+const mapStateToProps = ({ user: { currentUser } }) => ({
+    currentUser,
+
 })
 export default connect(mapStateToProps)(Header);
