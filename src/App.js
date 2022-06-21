@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { HomePage } from './pages/homepage/homepage.component';
 import { ShopPage } from './pages/shop/shop.component';
 import Header from './components/header/header.component';
@@ -51,15 +51,24 @@ class App extends React.Component {
         <Routes>
           <Route exact path='/' element={<HomePage />}></Route>
           <Route exact path='/shop' element={<ShopPage />}></Route>
-          <Route exact path='/signin' element={<SignInAndSignUpPage />}></Route>
+          <Route
+            exact
+            path='/signin'
+            element={
+              this.props.currentUser ? <Navigate replace to='/' /> : <SignInAndSignUpPage />
+            }></Route>
         </Routes>
       </div>
     );
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
