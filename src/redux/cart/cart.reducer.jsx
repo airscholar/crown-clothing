@@ -13,6 +13,11 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 toggleCartHidden: !state.toggleCartHidden
             }
+        case CartActionTypes.ADD_NEW_ITEM:
+            return {
+                ...state,
+                itemCount: state.cartItems.push(action.payload),
+            }
         default:
             return state;
     }
