@@ -21,5 +21,6 @@ const CartDropdown = ({ toggleCartHidden, cartItems }) => {
 const mapStateToProps = state => ({
     toggleCartHidden: state.cart.toggleCartHidden,
     cartItems: state.cart.cartItems
+
 })
 export default connect(mapStateToProps)(CartDropdown);
