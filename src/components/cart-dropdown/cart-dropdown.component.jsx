@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 import './cart-dropdown.styles.scss';
 import { CartItem } from "../cart-item/cart-item.component";
-import { selectCartItems } from "../../redux/cart/cart.selectors";
+import { selectCartHidden, selectCartItems } from "../../redux/cart/cart.selectors";
+import { createStructuredSelector } from "reselect";
 
 const CartDropdown = ({ toggleCartHidden, cartItems }) => {
     if (toggleCartHidden) return null;
@@ -20,8 +21,8 @@ const CartDropdown = ({ toggleCartHidden, cartItems }) => {
     </div>
 }
 
-const mapStateToProps = state => ({
-    toggleCartHidden: state.cart.toggleCartHidden,
-    cartItems: selectCartItems(state),
+const mapStateToProps = createStructuredSelector({
+    toggleCartHidden: selectCartHidden,
+    cartItems: selectCartItems,
 })
 export default connect(mapStateToProps)(CartDropdown);
