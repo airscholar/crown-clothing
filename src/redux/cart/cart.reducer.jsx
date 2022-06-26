@@ -3,7 +3,6 @@ import { addItemToCart } from './cart.utils';
 
 const INITIAL_STATE = {
     cartItems: [],
-    itemCount: 0,
     toggleCartHidden: true
 }
 
@@ -18,7 +17,6 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 cartItems: addItemToCart(state.cartItems, action.payload),
-                itemCount: state.cartItems.length + 1
             }
         default:
             return state;
