@@ -5,7 +5,7 @@ export const CartItem = ({ imageUrl, name, quantity, price }) => (
         <img src={imageUrl} alt="cart-item"></img>
         <div className="item-details">
             <h2 className="name">{name}</h2>
-            <span> {quantity} x ${price}</span>
+            <span className='price'> {quantity} x ${price}</span>
         </div>
     </div >
 )

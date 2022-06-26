@@ -8,11 +8,14 @@ import { CartItem } from "../cart-item/cart-item.component";
 const CartDropdown = ({ toggleCartHidden, cartItems }) => {
     if (toggleCartHidden) return null;
     return <div className="cart-dropdown">
-        {
-            cartItems.map(({ ...otherProps }, idx) => (
-                <CartItem key={idx} {...otherProps} />
-            ))
-        }
+        <div className="cart-items">
+
+            {
+                cartItems.map(({ ...otherProps }, idx) => (
+                    <CartItem key={idx} {...otherProps} />
+                ))
+            }
+        </div>
         <CustomButton>GO TO CHECKOUT</CustomButton>
     </div>
 }
