@@ -1,18 +1,24 @@
 import React from 'react';
+import { createStructuredSelector } from 'reselect';
+import { createUserProfileDocument } from './firebase/user.firebase';
+
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { HomePage } from './pages/homepage/homepage.component';
 import { ShopPage } from './pages/shop/shop.component';
-import Header from './components/header/header.component';
 import { SignInAndSignUpPage } from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import CheckoutPage from './pages/checkout/checkout.component';
+
+import Header from './components/header/header.component';
+
 import './App.css';
+
 import { auth } from './firebase/firebase.utils';
-import { createUserProfileDocument } from './firebase/user.firebase';
+
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
 import { setToggleCartHidden } from './redux/cart/cart.actions';
 import { selectCartHidden } from './redux/cart/cart.selectors';
 import { selectCurrentUser } from './redux/user/user.selectors';
-import { createStructuredSelector } from 'reselect';
 
 class App extends React.Component {
   componentDidMount() {
@@ -62,6 +68,7 @@ class App extends React.Component {
             element={
               this.props.currentUser ? <Navigate replace to='/' /> : <SignInAndSignUpPage />
             }></Route>
+          <Route exact path='/checkout' element={<CheckoutPage />}></Route>
         </Routes>
       </div>
     );
