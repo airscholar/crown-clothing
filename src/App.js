@@ -61,7 +61,7 @@ class App extends React.Component {
         <Header />
         <Routes>
           <Route exact path='/' element={<HomePage />}></Route>
-          <Route exact path='/shop' element={<ShopPage />}></Route>
+          <Route exact path='/shop/*' element={<ShopPage />}></Route>
           <Route
             exact
             path='/signin'
