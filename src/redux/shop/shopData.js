@@ -2,7 +2,7 @@ export const SHOP_DATA = {
   hats: {
     id: 1,
     title: 'Hats',
-    routeName: 'hats',
+    routeName: 'shop/hats',
     items: [
       {
         id: 1,
