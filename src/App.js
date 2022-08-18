@@ -19,6 +19,7 @@ import { setCurrentUser } from './redux/user/user.actions';
 import { setToggleCartHidden } from './redux/cart/cart.actions';
 import { selectCartHidden } from './redux/cart/cart.selectors';
 import { selectCurrentUser } from './redux/user/user.selectors';
+// import { selectShopCollections } from './redux/shop/shop.selector';
 
 class App extends React.Component {
   componentDidMount() {
@@ -40,6 +41,10 @@ class App extends React.Component {
       }
 
       createUserProfileDocument(userAuth);
+      // addCollectionAndDocuments(
+      //   'collections',
+      //   collectionsArray.map(({ title, items }) => ({ title, items }))
+      // );
     });
   }
 
@@ -78,6 +83,7 @@ class App extends React.Component {
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   toggleCartHidden: selectCartHidden,
+  // collectionsArray: selectShopCollections,
 });
 
 const mapDispatchToProps = dispatch => ({
