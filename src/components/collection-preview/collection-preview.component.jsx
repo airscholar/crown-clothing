@@ -6,7 +6,7 @@ import './collection-preview.styles.scss'
 export const CollectionPreview = ({ title, items }) => {
     return (
         <div className="collection-preview">
-            <div>
+            <div className="title">
                 <h1>{title}</h1>
             </div>
             <div className="preview">
