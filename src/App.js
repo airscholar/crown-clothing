@@ -49,7 +49,7 @@ class App extends React.Component {
   }
 
   unSubscribe() {
-    this.unSubscribeFromAuth = null;
+  this.unSubscribeFromAuth = null;
     // this.unSubscribeFromAuth();
   }
 
